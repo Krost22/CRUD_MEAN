@@ -2,3 +2,11 @@
     cursor: pointer;
     margin-left:7px;
 }
+.container-fluid{
+    text-align:center;
+    position: relative;
+    background: local;
+    background-color: rgb(255, 255, 255);
+    position: absolute;
+    bottom: 0px;
+}

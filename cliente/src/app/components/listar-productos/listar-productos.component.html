@@ -34,11 +34,8 @@
                                 <i [routerLink]="['/editar-producto', producto._id]" class="fa-solid fa-pen-to-square text-primary"></i>
                                 <i (click)="eliminarProductos( producto._id )"  class="fa-solid fa-trash-can text-danger"></i>
                               </td>
-
                           </tr>                          
-                            
                         </tbody>
-                        
                       </table> 
                       <h5 *ngIf="listProductos.length == 0" style="text-align:center; margin: top 10px;" > Aun no tenemos productos en nuestra base de datos, intenta usar el boton AGREGAR   
                       <strong><p>=͟͟͞͞ (ง °᎑°)ว</p></strong></h5>
@@ -46,4 +43,14 @@
             </div>
         </div>
     </div>
-</div>        
+</div>    
+<div class="container-fluid mt-5 text-start p-1" id="footer">
+  <footer>
+    <p>&copy; Derechos Reservados</p>
+    <ul>
+      <li><a href="https://www.instagram.com/krostedits/">Acerca de KrostEdits</a></li>
+      <li><a href="https://www.facebook.com/eduardo.mogollon.salcedo">facebook</a></li>
+      <li><a href="/conectar">Aplicacion web desarrollada por Eduardo De Jesús Mogollón Salcedo</a></li>
+    </ul>
+  </footer>
+</div>    
