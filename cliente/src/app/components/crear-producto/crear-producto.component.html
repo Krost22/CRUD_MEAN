@@ -1,0 +1,80 @@
+<div class="container mt-5">
+    <div class="row">
+      <div class="col-lg-6 offset-lg-3">
+        <div class="card">
+            <div class="card body text-center">
+                <span class="titulo">{{ titulo | uppercase }}</span>
+                    <form class="mt-3" [formGroup]= "productoform" (ngSubmit) ="agregarProducto()">
+                        <div class="mb-3">
+                            <input type="text" formControlName="nombre"
+                             class="form-control form-control-lg" placeholder="Nombre del producto" >
+
+                            <div class="text-danger"
+                                 *ngIf="productoform.get('nombre')?.hasError('required') && productoform.get('nombre')?.touched">
+                                <span>El nombre del producto es <strong>obligatorio</strong></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="mb-3">
+                            <input type="number" formControlName="peso"
+                            class="form-control form-control-lg" placeholder="Peso(kg)">
+
+                            <div class="text-danger"
+                                 *ngIf="productoform.get('peso')?.hasError('required') && productoform.get('peso')?.touched">
+                                <span>El peso del producto es <strong>obligatorio</strong></span>
+                            </div>
+
+                        </div>
+
+
+                        <div class="mb-3">
+                            <input type="text" formControlName="proveedor"
+                            class="form-control form-control-lg" placeholder="Proveedor" >
+
+                        </div>
+
+
+                        <div class="mb-3">
+                            <input type="text" formControlName="unidades"
+                            class="form-control form-control-lg" placeholder="Unidades" >
+
+                            <div class="text-danger"
+                                 *ngIf="productoform.get('unidades')?.hasError('required') && productoform.get('unidades')?.touched">
+                                <span>Digitar las unidades es <strong>obligatorio</strong></span>
+                            </div>
+                            
+
+                        </div>
+
+
+                        <div class="mb-3">
+                            <input type="text" formControlName="placa_vehiculo"
+                            class="form-control form-control-lg" placeholder="Placa del vehiculo" >
+
+                        </div>    
+
+
+                        <div class="mb-3">
+                            <input type="text" formControlName="observaciones"
+                            class="form-control form-control-lg" placeholder="Observaciones" >
+
+                            <div class="text-danger"
+                                 *ngIf="productoform.get('observaciones')?.hasError('required') && productoform.get('observaciones')?.touched">
+                                <span>Aunque sea corta, una observacion es <strong>obligatoria</strong></span>
+                            </div>
+                            
+
+                        </div>
+
+                        <div class="mb-3">
+                            <button type="submit" class="btn btn-success btn-lg float-end">CREAR</button>
+                            <button type="button" routerLink="/" class="btn btn-secondary btn-lg float-start">VOLVER</button>
+                        </div>
+                    </form>
+
+            </div>
+        </div>
+    </div>
+</div>
