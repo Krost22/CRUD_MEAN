@@ -20,7 +20,6 @@ export class ListarProductosComponent implements OnInit {
   }
 
 
-
   obtenerProductos() {
     this._productoService.getProductos().subscribe(data => {
       console.log(data);
@@ -31,6 +30,7 @@ export class ListarProductosComponent implements OnInit {
     
   }
 
+  
 
   eliminarProductos(id: any) {
     this._productoService.eliminarProductos(id).subscribe(data => { 
@@ -41,5 +41,19 @@ export class ListarProductosComponent implements OnInit {
     })
 
   
+
+  }
+
+//incompleto
+  getfiltro(id: any) {
+    this._productoService.eliminarProductos(id).subscribe(data => { 
+      this.toastr.error('El producto fue eliminado con exito' ,'Producto Eliminado');
+      this.obtenerProductos();
+    }, error => {
+      console.log(error);
+    })
+
+  
+
   }
 }

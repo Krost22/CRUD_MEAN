@@ -1,3 +1,4 @@
+const { Productoschema } = require("../models/Producto");
 const Producto = require("../models/Producto");
 
 exports.crearProducto = async(req, res) => {
@@ -35,6 +36,35 @@ exports.obtenerProductos = async (req, res) => {
     }
 }
 
+
+
+exports.obtenerProducto = async (req, res) => {
+
+    
+    try {
+        //GET especifico
+        let producto = await Producto.find({nombre: req.params["nombre"] });
+
+        if(!producto)  return  res.status(404).json({msg: 'No Existe el producto :C' })
+
+  
+    res.json(producto);
+
+    } catch (error) {
+        console.log(error);
+        res.status(500).json({msg:'hubo un error'});
+       
+    }
+
+
+
+}
+
+
+
+
+
+
 exports.actualizarProductos = async (req, res) => {
 
     try {
@@ -59,25 +89,31 @@ exports.actualizarProductos = async (req, res) => {
         
     }
 
-    exports.obtenerProductos = async (req, res) => {
 
-        try {
-            //GET especifico
-            let producto = await producto.findById({_id: req.params["_id"]});
+
+
+    //POR ALGUNA RAZON ESTA MADRE DA ERROR SI SE BORRA NO TOCAR;
+    /*exports.obtenerProducto = async (req, res) => {
+
+        console.log("desde get especifico");
+         try {
+             //GET especifico
+             let producto = await producto.findById({_id: req.params["_id"]});
     
-            if(!producto)  return  res.status(404).json({msg: 'No Existe el producto :C' })
+             if(!producto)  return  res.status(404).json({msg: 'No Existe el producto :C' })
 
        
-        res.json(producto);
+         res.json(producto);
     
-        } catch (error) {
-            console.log(error);
-            res.status(500).json({msg:'hubo un error'});
+         } catch (error) {
+             console.log(error);
+             res.status(500).json({msg:'hubo un error'});
             
-        }
+         }
 
 
     }
+    */
 }
 
 
@@ -95,5 +131,22 @@ exports.actualizarProductos = async (req, res) => {
         } catch (e) {
             res.status(500).json({msg:'hubo un error'});            
         }
+
+}
+//incompleto
+exports.getfiltro = async (req, res) => {
+
+    try {
+        //filtrar producto
+        let producto = await Producto.find({_id: req.params.data.producto});
+
+         if(!producto)  return  res.status(404).json({msg: 'No Existe el producto :C' })
+
+         await Producto.find({_id: req.params.data.producto})
+         res.status(400).json ({msg: 'Producto eliminado con exito' });
+
+    } catch (e) {
+        res.status(500).json({msg:'hubo un error'});            
+    }
 
 }
