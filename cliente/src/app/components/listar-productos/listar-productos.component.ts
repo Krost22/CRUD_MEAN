@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { ToastrService } from 'ngx-toastr';
 import { producto } from 'src/app/models/producto';
 import { ProductoService } from 'src/app/services/producto.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-listar-productos',
@@ -32,23 +32,10 @@ export class ListarProductosComponent implements OnInit {
 
   
 
-  eliminarProductos(id: any) {
+  eliminarProductos(id: any) { this.toastr.error('El producto fue eliminado con exito' ,'RECARGUE LA PAGINA PORFAVOR');
     this._productoService.eliminarProductos(id).subscribe(data => { 
-      this.toastr.error('El producto fue eliminado con exito' ,'Producto Eliminado');
       this.obtenerProductos();
-    }, error => {
-      console.log(error);
-    })
-
-  
-
-  }
-
-//incompleto
-  getfiltro(id: any) {
-    this._productoService.eliminarProductos(id).subscribe(data => { 
-      this.toastr.error('El producto fue eliminado con exito' ,'Producto Eliminado');
-      this.obtenerProductos();
+      
     }, error => {
       console.log(error);
     })

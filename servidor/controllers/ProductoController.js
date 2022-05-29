@@ -126,7 +126,7 @@ exports.actualizarProductos = async (req, res) => {
              if(!producto)  return  res.status(404).json({msg: 'No Existe el producto :C' })
 
              await Producto.findOneAndDelete({_id: req.params["_id"]})
-             res.status(400).json ({msg: 'Producto eliminado con exito' });
+             res.status(200).send ( 'Producto eliminado con exito' );
     
         } catch (e) {
             res.status(500).json({msg:'hubo un error'});            

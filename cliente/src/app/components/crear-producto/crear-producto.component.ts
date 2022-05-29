@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {FormBuilder, FormGroup, Validators }from '@angular/forms';
+import { FormBuilder, FormGroup, Validators }from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { producto } from 'src/app/models/producto';
@@ -13,13 +13,13 @@ import { ProductoService } from 'src/app/services/producto.service';
 export class CrearProductoComponent implements OnInit {
   productoform: FormGroup;
   titulo = 'Crear producto';
-  id:  string;
+  id: string | null;
 
-  constructor(private fb: FormBuilder,
-              private router: Router,
-              private toastr: ToastrService,
+  constructor(private fb:                FormBuilder,
+              private router:            Router,
+              private toastr:            ToastrService,
               private _productoService : ProductoService,
-              private aRouter: ActivatedRoute) {
+              private aRouter:           ActivatedRoute) {
     this.productoform = this.fb.group( {
       nombre:         ['', Validators.required],
       peso:           ['', Validators.required],
@@ -29,7 +29,7 @@ export class CrearProductoComponent implements OnInit {
       observaciones:  ['', Validators.required],
     })
 
-    this.id = this.aRouter.snapshot.paramMap.get('id')!;
+    this.id = this.aRouter.snapshot.paramMap.get('id');
 
    }
 
@@ -78,7 +78,7 @@ export class CrearProductoComponent implements OnInit {
     if(this.id != null){
       this.titulo = "Editar producto";
       this._productoService.obtenerProductos(this.id).subscribe(data => {
-        this.productoform.setValue({
+        this.productoform.patchValue({
           nombre :         data.nombre,
           peso :           data.peso,
           proveedor :      data.proveedor,

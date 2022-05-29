@@ -6,6 +6,7 @@ export class producto {
     placa_vehiculo: string;
     unidades: number;
     observaciones: string;
+  static title: any;
     
 
     constructor(nombre: string, peso: number, proveedor: string, placa_vehiculo: string, unidades: number, observaciones: string) {
