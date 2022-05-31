@@ -3,8 +3,6 @@ const express = require('express');
 const router = express.Router();
 const productoController = require('../controllers/ProductoController');
 
-
-let re = new RegExp('abc');
 // api/productos
 router.post('/',          productoController.crearProducto);
 router.get('/',           productoController.obtenerProductos);

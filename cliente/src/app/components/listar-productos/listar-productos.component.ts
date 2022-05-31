@@ -31,16 +31,13 @@ export class ListarProductosComponent implements OnInit {
   }
 
   
-
-  eliminarProductos(id: any) { this.toastr.error('El producto fue eliminado con exito' ,'RECARGUE LA PAGINA PORFAVOR');
+  eliminarProductos(id: any) { this.toastr.info('RECARGUE LA PAGINA PORFAVOR','El producto fue eliminado con exito');
     this._productoService.eliminarProductos(id).subscribe(data => { 
       this.obtenerProductos();
       
     }, error => {
       console.log(error);
     })
-
-  
 
   }
 }

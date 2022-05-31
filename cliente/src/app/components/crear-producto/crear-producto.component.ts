@@ -14,6 +14,7 @@ export class CrearProductoComponent implements OnInit {
   productoform: FormGroup;
   titulo = 'Crear producto';
   id: string | null;
+  editing: boolean=false;
 
   constructor(private fb:                FormBuilder,
               private router:            Router,
@@ -30,7 +31,7 @@ export class CrearProductoComponent implements OnInit {
     })
 
     this.id = this.aRouter.snapshot.paramMap.get('id');
-
+    
    }
 
   ngOnInit(): void {
@@ -40,7 +41,7 @@ export class CrearProductoComponent implements OnInit {
   agregarProducto(){
     console.log(this.productoform)
 
-    const PRODUCTO: producto = {
+    let PRODUCTO: producto = {
       nombre:         this.productoform.get('nombre')?.value,
       peso:           this.productoform.get('peso')?.value,
       proveedor:      this.productoform.get('proveedor')?.value,
@@ -54,6 +55,7 @@ export class CrearProductoComponent implements OnInit {
       this._productoService.editarProductos(this.id, PRODUCTO).subscribe(data => {
         this.toastr.info('¡El producto fue Actualizado con exito!', '¡Producto Actualizado!');
         this.router.navigate(['/']);
+        
       },error => {
         console.log(error);
         this.productoform.reset();
@@ -75,10 +77,11 @@ export class CrearProductoComponent implements OnInit {
 
   esEditar(){
 
-    if(this.id != null){
+    if(this.id !== null){
       this.titulo = "Editar producto";
       this._productoService.obtenerProductos(this.id).subscribe(data => {
-        this.productoform.patchValue({
+        
+        this.productoform.setValue({
           nombre :         data.nombre,
           peso :           data.peso,
           proveedor :      data.proveedor,

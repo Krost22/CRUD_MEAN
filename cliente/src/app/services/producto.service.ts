@@ -32,9 +32,5 @@ export class ProductoService {
     return this.http.put(this.url + id, producto);
   }
 
-  //incompleto
-  getfiltro(id: string, producto: producto): Observable<any>{
-    return this.http.get(this.url + producto);
-  }
 
 }

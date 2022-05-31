@@ -86,7 +86,7 @@ exports.actualizarProductos = async (req, res) => {
 
     } catch (error) {
         console.log(error);
-        
+        res.status(500).send('Hubo un error');
     }
 
 
@@ -131,22 +131,5 @@ exports.actualizarProductos = async (req, res) => {
         } catch (e) {
             res.status(500).json({msg:'hubo un error'});            
         }
-
-}
-//incompleto
-exports.getfiltro = async (req, res) => {
-
-    try {
-        //filtrar producto
-        let producto = await Producto.find({_id: req.params.data.producto});
-
-         if(!producto)  return  res.status(404).json({msg: 'No Existe el producto :C' })
-
-         await Producto.find({_id: req.params.data.producto})
-         res.status(400).json ({msg: 'Producto eliminado con exito' });
-
-    } catch (e) {
-        res.status(500).json({msg:'hubo un error'});            
-    }
 
 }

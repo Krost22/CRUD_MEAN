@@ -6,6 +6,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule } from '@angular/common/http';
+import { CookieService } from 'ngx-cookie-service';
 
 //Componentes
 import { AppComponent } from './app.component';
@@ -13,6 +14,10 @@ import { CrearProductoComponent } from './components/crear-producto/crear-produc
 import { ListarProductosComponent } from './components/listar-productos/listar-productos.component';
 import { PostsComponent } from './components/posts/posts.component';
 import { FilterPipe } from './pipes/filter.pipe';
+import { LoginComponent } from './components/login/login.component';
+import { RegisterComponent } from './components/register/register.component';
+import { HomeComponent } from './home/home.component';
+
 
 @NgModule({
   declarations: [
@@ -20,7 +25,11 @@ import { FilterPipe } from './pipes/filter.pipe';
     CrearProductoComponent,
     ListarProductosComponent,
     PostsComponent,
-    FilterPipe
+    FilterPipe,
+    LoginComponent,
+    RegisterComponent,
+    HomeComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -29,9 +38,9 @@ import { FilterPipe } from './pipes/filter.pipe';
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
     HttpClientModule,
-    FormsModule
+    FormsModule,
   ],
-  providers: [],
+  providers: [CookieService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
