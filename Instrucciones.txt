@@ -1,7 +1,3 @@
-------ARCHIVOS NECESARIOS----
-
-
-
 ------PARA INICIAR------
 
 Para correr el servidor
