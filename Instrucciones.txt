@@ -6,3 +6,12 @@ npm run dev (console)
 Para correr el cliente
 ng serve    (console)
 npm start
+
+
+------REQUISITOS-------
+
+Angular CLI global
+Mongo
+express
+node.js
+nodemon
