@@ -5,3 +5,4 @@ npm run dev (console)
 
 Para correr el cliente
 ng serve    (console)
+npm start
